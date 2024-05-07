@@ -1,0 +1,32 @@
+Define $\mathscr{U}:C_{0}^{\infty}\left(\mathbb{R}\right)\rightarrow\mathbb{C}$
+by 
+\[
+\langle\mathscr{U},\phi\rangle=\int_{\mathbb{R}}\lvert x\rvert^{2}\phi^{\prime}(x)\,dx+\langle\delta_{a_{1}},\phi\rangle+\langle\delta_{a_{2}},\phi\rangle,
+\]
+where $a_{1}\neq a_{2}$. Show that $\mathscr{U}$ is linear and that
+if $\left\{ \psi_{k}\right\} _{k=1}^{\infty}$ converges to $\psi$
+in $C_{0}^{\infty}\left(\mathbb{R}\right)$, then 
+\[
+\langle\mathscr{U},\psi_{k}\rangle\xrightarrow[k\to\infty]{}\langle\mathscr{U},\psi\rangle;
+\]
+i.e., $\mathscr{U}$ is continuous and so is a distribution. 
+\begin{proof}
+    To demonstrate linearity we see that,
+    \begin{equation*}
+        \begin{aligned}           \langle\mathscr{U},\alpha\phi+\beta\psi\rangle&=\int_{\mathbb{R}}\lvert x\rvert^{2}\left(\alpha\phi^{\prime}+\beta\psi^{\prime}\right)(x)\,dx+\langle\delta_{a_{1}},\alpha\phi+\beta\psi\rangle\\
+        &\hspace{1.5cm}+\langle\delta_{a_{2}},\alpha\phi+\beta\psi\rangle,\\
+        &=\alpha\int_{\mathbb{R}}\lvert x\rvert^{2}\phi^{\prime}(x)\,dx+\alpha\langle\delta_{a_{1}},\phi\rangle+\alpha\langle\delta_{a_{2}},\phi\rangle\\
+        &\hspace{1.5cm}+\beta\int_{\mathbb{R}}\lvert x\rvert^{2}\psi^{\prime}(x)\,dx+\beta\langle\delta_{a_{1}},\psi\rangle+\beta\langle\delta_{a_{2}},\psi\rangle,\\
+        &=\alpha\langle\mathscr{U},\phi\rangle+\beta\langle\mathscr{U},\psi\rangle
+        \end{aligned}
+    \end{equation*}
+    Also, because $\left\{ \psi_{k}\right\} _{k=1}^{\infty}$ converges to $\psi$, there exists a compact set $K$ such that $supp\,\psi_k\subseteq K$ for all $k\in\mathbb{N}$ and there exists a $p>0$ such that $K\subseteq[-p,p]$. Also, $\partial^{\alpha}\psi_k$ converges uniformly to $\partial^{\alpha}\psi$ for $\alpha\in\mathbb{N}$. Then, we immediately see that,
+    \begin{equation*}
+        \begin{aligned}
+        \lim_{k\to\infty}\langle\mathscr{U},\psi_{k}\rangle&=\lim_{k\to\infty}\left\{\int_{\mathbb{R}}\lvert x\rvert^{2}\psi_k^{\prime}(x)\,dx+\langle\delta_{a_{1}},\psi_k\rangle+\langle\delta_{a_{2}},\psi_k\rangle\right\}\\
+        &=\int_{\mathbb{R}}\lim_{k\to\infty}\lvert x\rvert^{2}\psi_k^{\prime}(x)\,dx+\langle\delta_{a_{1}},\psi\rangle+\langle\delta_{a_{2}},\psi\rangle,\\
+        &=\langle\mathscr{U},\psi\rangle
+        \end{aligned}     
+    \end{equation*}
+    
+\end{proof}

@@ -1,0 +1,83 @@
+
+Let $n\in\mathbb{N}\cup\left\{ 0\right\} $ and let $h>0$. Prove
+the following proposition.\\
+\\
+\textbf{Proposition: }Let $f$ be a real-valued function on the interval
+$[a,a+h]$ such that $f^{(n+1)}(x)$ exists for every $x\in[a,a+h]$
+and $f^{(n+1)}$ is continuous on $[a,a+h]$. Let 
+\[
+R_{k+1}(x)=\frac{1}{k!}\int_{a}^{x}\left(x-t\right)^{k}f^{(k+1)}(t)\,dt
+\]
+for $x\in[a,a+h]$; $k=0,1,\ldots,n$. Then 
+\[
+R_{k}(x)-R_{k+1}(x)=\frac{f^{(k)}(a)}{k!}\left(x-a\right)^{k}
+\]
+for $x\in[a,a+h]$; $k=1,\ldots,n$. The same result holds if $h<0$
+and $[a,a+h]$ is replaced by $[a+h,a]$. \\
+\\
+
+
+\begin{proof}
+    We begin by seeing that $R_1(x)=f(x)-f(a)$ and that $R_2(x)=\int_{a}^x(x-t)f^{\prime\prime}(t)dt$. Then,
+    \begin{equation*}
+        \begin{aligned}
+            R_1-R_2&=\left[f(x)-f(a)\right]-\int_{a}^x(x-t)f^{\prime\prime}(t)\,dt\\
+            &=\left[f(x)-f(a)\right]-x\int_{a}^xf^{\prime\prime}(t)\,dt+\int_{a}^x t f^{\prime\prime}(t)\,dt\\
+            &=\left[f(x)-f(a)\right]-x\left[f^{\prime}(x)-f^{\prime}(a)\right]+\int_{a}^x t f^{\prime\prime}(t)\,dt\\
+            &=\left[f(x)-f(a)\right]-x\left[f^{\prime}(x)-f^{\prime}(a)\right]+tf^{\prime}(t)\bigg\rvert_a^x-\int_{a}^xf^{\prime}(t)\,dt\\
+            &=f'(a)[x-a]
+        \end{aligned}
+    \end{equation*}
+    We then proceed inductively, assuming that for some $k\in\mathbb{N},$ 
+    \[
+    R_{k}(x)-R_{k+1}(x)=\frac{f^{(k)}(a)}{k!}\left(x-a\right)^{k}.
+    \]
+    We seek to demonstrate the $k+1$ case. 
+    \begin{equation}
+        \begin{aligned}
+            R_{k+1}-R_{k+2}&=\frac{1}{k!}\int_{a}^{x}\left(x-t\right)^{k}f^{(k+1)}(t)\,dt\\&-\frac{1}{(k+1)!}\int_{a}^{x}\left(x-t\right)^{k+1}f^{(k+2)}(t)\,dt
+        \end{aligned}
+    \end{equation}
+    We focus on simplifying $R_{k+2}$ to start. Using integration by parts,  
+    \begin{equation*}
+        \begin{aligned}
+        R_{k+2}&=\frac{(x-t)^{k+1}f^{(k+1)}(t)}{(k+1)!}\bigg\rvert_a^x+\frac{k+1}{(k+1)k!}\int_{a}^{x}\left(x-t\right)^{k}f^{(k+1)}(t)\,dt
+        \end{aligned}
+    \end{equation*}
+    Plugging this back into the original equation yields,
+    \begin{equation*}
+        \begin{aligned}
+        R_{k+1}-R_{k+2}&=-\frac{(x-t)^{k+1}f^{(k+1)}(t)}{(k+1)!}\bigg\rvert_a^x\\
+        &=\frac{f^{(k+1)}(a)}{(k+1)!}\left(x-a\right)^{k+1}
+        \end{aligned}
+    \end{equation*}
+    as required.
+\end{proof}
+
+Use the proposition above to prove:\\
+\\
+\textbf{Theorem: }Let $f$ be a real-valued function on $[a,a+h]$
+such that $f^{(n+1)}(x)$ exists for every $x\in[a,a+h]$ and $f^{(n+1)}$
+is continuous on $[a,a+h]$. Then 
+\[
+f(x)=\sum_{k=1}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^{k}+\frac{1}{n!}\int_{a}^{x}(x-t)^{n}f^{(n+1)}(t)\,dt.
+\]
+The same result holds if $h<0$ and $[a,a+h]$ is replaced by $[a+h,a]$. 
+
+\begin{proof}
+    First we observe that $f(x)=R_1+f(a)$. But because,
+    \[R_{1}(x)=f^{\prime}(a)\left(x-a\right)+R_{2}(x),\]
+    substituting yields,
+    \[f(x)=f(a)+f^{\prime}(a)\left(x-a\right)+R_{2}(x).\]
+    Similarly, 
+    \[R_{2}(x)=\frac{f^{(2)}(a)}{2!}\left(x-a\right)^{2}+R_{3}(x),\]
+    and,
+    \[f(x)=f(a)+f^{\prime}(a)\left(x-a\right)+\frac{f^{(2)}(a)}{2!}\left(x-a\right)^{2}+R_{3}(x).\]
+    Proceeding inductively,
+    \begin{equation*}
+        \begin{aligned}
+        f(x)&=\sum_{k=1}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^{k}+R_{n+1}\\
+        &=\sum_{k=1}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^{k}+\frac{1}{n!}\int_{a}^{x}(x-t)^{n}f^{(n+1)}(t)\,dt.
+        \end{aligned}  
+    \end{equation*}
+\end{proof}
